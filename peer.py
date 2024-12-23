@@ -1,12 +1,12 @@
 #-----------------------------------------
 # NAME: Hasin Ishrak 
-# STUDENT NUMBER: 7886741
-# COURSE: COMP 3010, SECTION: A02
-# INSTRUCTOR: Dr. Sara Rouhani
-# TERM: FALL 2023
-# ASSIGNMENT: Assignment 03
 # 
-# REMARKS: Creting a Blockchain peer that 
+# 
+# 
+# 
+# 
+# 
+# REMARKS: Creating a Blockchain peer that 
 #           stores messages in blocks
 #
 #-----------------------------------------
@@ -24,7 +24,7 @@ import hashlib
 # Constants
 WELL_KNOWN_HOST = 'silicon.cs.umanitoba.ca'
 WELL_KNOWN_HOST_PORT = 8999
-GOSSIP_REPEAT_COUNT = 3 # Repeat Gossip upto 3 peers
+GOSSIP_REPEAT_COUNT = 3 # Repeat Gossip up to 3 peers
 DROP_THRESHOLD = 60  # Remove a peer if not been heard from a minute
 SERVER_PORT = 8359  # Change to the desired port
 DIFFICULTY = 9 # Number of trailing zeros
@@ -396,7 +396,7 @@ def print_peer_list():
 # Main function
 if __name__ == "__main__":
 
-    # Gossip message to the well known host, port
+    # Gossip message to the well-known host, port
     gossip_id = str(uuid.uuid4())
     gossip(gossip_id, WELL_KNOWN_HOST, WELL_KNOWN_HOST_PORT)
     gossiped_id.append(gossip_id)
@@ -446,7 +446,7 @@ if __name__ == "__main__":
                                             if peer["host"] == received_message["host"] and peer["port"] == received_message["port"]:
                                                 peer["last_active"] = time.time()
                                     
-                                    # Reply but not repat GOSSIP messages and repeat to 3 peers
+                                    # Reply but not repeat GOSSIP messages and repeat to 3 peers
                                     if received_message["id"] not in gossiped_id:
                                         gossiped_id.append(received_message["id"])
                                         reply_to_gossip(received_message)
@@ -501,7 +501,7 @@ if __name__ == "__main__":
             except socket.timeout:
                 pass
 
-        # Remove peers that have not been heard from in a minute
+        # Remove peers not heard from in a minute
         current_time = time.time()
         size_of_list = len(peer_list)
         peer_list = [peer for peer in peer_list if current_time - peer.get("last_active", 0) <= DROP_THRESHOLD]
